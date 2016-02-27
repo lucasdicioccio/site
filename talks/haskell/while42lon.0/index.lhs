@@ -22,10 +22,10 @@ Haskell in fewer than 10e6 ms.
 
 - I can write "quick-and-dirty" code just fine now, but I know that making leaps upward is pretty cheap with Haskell.
 - Correctness for most stupid yet time-consuming errors is basically free.
-- The light cost of types is allows me to consicely and very precisly model the most important bits of a problem I want to capture.
-- The syntax is a bit foreign at first but some features like "side effects as values" or the "do-notation" allow for pretty embedded-DSLs.
+- The light cost of types allows to consicely and precisely model importants features.
+- The syntax is a bit foreign at first but "side effects as values" and the "do-notation" allow for cute embedded-DSLs.
 - In a number of instances, you realize you gained a lot of hindsight about the problem you were solving and are able to connect it to other solutions.
-- Please, do challenge people who tell Haskell is not "practical" to give you solid arguments and match these arguments against your own "pyramid of needs". Maybe they have a good but out-of-date picture of things, especially from people isolated from typed-FP for years.
+- Please, do challenge people who tell Haskell is not "practical". Ask them to give you solid arguments and match these arguments against your own "pyramid of needs". Maybe they have a good but out-of-date picture of things, especially from people isolated from typed-FP for years.
 
 
 
@@ -187,8 +187,8 @@ Haskell in fewer than 10e6 ms.
 >           -- promise you need not pay the cost of carrying-around the `a` items
 >           -- of the list. Suddenly, your list looks like just a natural
 >           -- number corresponding to the lenght of the list. Reasoning on
->           -- types proves this interesting fact pretty nicely:
->           data List a         = Empty | (a, List a)
+>           -- types shows this interesting fact pretty nicely:
+>           data List a         = Empty | (      a,  List a)
 >           data Natural        = Zero  | (PlusOne, Natural)
 >
 >           ["hello", "world"]  = ("hello", ("world", Empty))
@@ -197,7 +197,7 @@ Haskell in fewer than 10e6 ms.
 >           [______ , _______]  = (_______, (_______, Empty))
 >           TwoThings           = (PlusOne, (PlusOne, Zero ))
 
-- **laziness**: express the mathematical statement defining a value, computation will occur as needed
+- **laziness**: expresses the mathematical statement defining a value, computation will occur as needed
 
 >           fibs :: [Int]
 >           fibs = 0 : 1 : zipWith (+) fibs (tail fibs) 
@@ -225,7 +225,7 @@ Haskell in fewer than 10e6 ms.
 - good memory footprint, decent speed, and pretty extensive profiling support/GC-knobs
 - lots of amazing libraries (for parsing, for testing, to interface with C or R, to write web microservices, connect to databases etc.) on Hackage
 - long compile-time and some amount of dependency hell, being fixed
-- some impedance mismatch between strong types and things like where the "shape" of a same data varies widely with the input (e.g., `SELECT colnames` in SQL). Can definitely drop the type-safety but feels less idiomatic.
+- some impedance mismatch between strong types and things where the "shape" of a same data varies widely with the input (e.g., `SELECT colnames` in SQL). One can give-away the type-safety and treat all columns as equal but feels less idiomatic.
 - *key takeaway*: learn it now or re-invent a half-baked version using "best-practices" later
 
 -------
