@@ -176,7 +176,7 @@ Haskell in fewer than 10e6 ms.
 >                                -- the list, not its content.
 >
 >           length [Nothing]                                        = 1
->           length [User "Grace Hopper"]                             = 1
+>           length [User "Grace Hopper"]                            = 1
 >           length [error "if-you-evaluate-me-the-program-crashes"] = 1
 >
 >           -- Another way to put it is that you could drop the information `a`
