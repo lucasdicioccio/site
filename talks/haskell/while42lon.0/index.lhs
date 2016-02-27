@@ -18,11 +18,11 @@ Haskell in fewer than 10e6 ms.
 
 - The lucasdicioccio pyramid of solutions
 
-` timeliness > correctness > maintainability > prettiness > ligth-shedding `
+` timeliness > correctness > maintainability > prettiness > light-shedding `
 
 - I can write "quick-and-dirty" code just fine now, but I know that making leaps upward is pretty cheap with Haskell.
 - Correctness for most stupid yet time-consuming errors is basically free.
-- The light cost of types allows to consicely and precisely model importants features.
+- The light cost of types allows to concisely and precisely model important features.
 - The syntax is a bit foreign at first but "side effects as values" and the "do-notation" allow for cute embedded-DSLs.
 - In a number of instances, you realize you gained a lot of hindsight about the problem you were solving and are able to connect it to other solutions.
 - Please, do challenge people who tell Haskell is not "practical". Ask them to give you solid arguments and match these arguments against your own "pyramid of needs". Maybe they have a good but out-of-date picture of things, especially from people isolated from typed-FP for years.
@@ -90,7 +90,7 @@ Haskell in fewer than 10e6 ms.
 
 -------
 
-# Purity revovlves around a simple principle: referential transparency
+# Purity revolves around a simple principle: referential transparency
 
 - definition: you can swap the result of a computation for the computation
 - in layman terms: cut-n-paste is correct
@@ -111,7 +111,7 @@ Haskell in fewer than 10e6 ms.
 
 - Referential transparency blurs the concept of "variable": we only have names for "values we carry around" (e.g., `left`, `right`)
 - Referential transparency blurs the concept of "result": we only have names for "values we want to compute" (e.g., `partition f [1,2,3]`)
-- Referential transparency necessitates a trick to represent side-effects because side-effect cannot be swaped for their result (e.g., result of an HTTP get to the weatherforecast website will depends on the day you apply the side-effect).
+- Referential transparency necessitates a trick to represent side-effects because side-effect cannot be swapped for their result (e.g., result of an HTTP get to the weather forecast website will depends on the day you apply the side-effect).
 - Haskell uses one level of indirection: side-effects are normal values. And one combines side-effects together to piece a single `main` side-effect.
 - In short, `main` actually is a **single** IO () action composed from many small actions. The compiler effectively is a function from a value of type `IO ()` returning an executable binary program that your OS understands.
 
@@ -167,7 +167,7 @@ Haskell in fewer than 10e6 ms.
 >           -- expose intermediary steps, which prevents your secret
 >           -- trick to make the tastiest crepes.
 
-- **parametricity** prevents observation (a.k.a univeral quantification)
+- **parametricity** prevents observation (a.k.a universal quantification)
 
 >           length :: [a] -> Int -- promises to work for "any" `a` you can
 >                                -- imagine (i.e., for all `a`). Thus, length
@@ -176,7 +176,7 @@ Haskell in fewer than 10e6 ms.
 >                                -- the list, not its content.
 >
 >           length [Nothing]                                        = 1
->           length [User "Grace Hoper"]                             = 1
+>           length [User "Grace Hopper"]                             = 1
 >           length [error "if-you-evaluate-me-the-program-crashes"] = 1
 >
 >           -- Another way to put it is that you could drop the information `a`
@@ -186,7 +186,7 @@ Haskell in fewer than 10e6 ms.
 >           -- are, but nothing more fancy. In practice, if you do such a
 >           -- promise you need not pay the cost of carrying-around the `a` items
 >           -- of the list. Suddenly, your list looks like just a natural
->           -- number corresponding to the lenght of the list. Reasoning on
+>           -- number corresponding to the length of the list. Reasoning on
 >           -- types shows this interesting fact pretty nicely:
 >           data List a         = Empty | (      a,  List a)
 >           data Natural        = Zero  | (PlusOne, Natural)
@@ -220,10 +220,10 @@ Haskell in fewer than 10e6 ms.
 
 # Practical life of a Haskeller
 - great feeling of having done the things right
-- steep but fullfilling learning curve
+- steep but fulfilling learning curve
 - fearless parallelism and concurrency thanks to purity-by-default (enforced by the compiler) rather than purity-by-scrutiny (enforced by your colleagues)
 - good memory footprint, decent speed, and pretty extensive profiling support/GC-knobs
-- lots of amazing libraries (for parsing, for testing, to interface with C or R, to write web microservices, connect to databases etc.) on Hackage
+- lots of amazing libraries (for parsing, for testing, to interface with C or R, to write web micro-services, connect to databases etc.) on Hackage
 - long compile-time and some amount of dependency hell, being fixed
 - some impedance mismatch between strong types and things where the "shape" of a same data varies widely with the input (e.g., `SELECT colnames` in SQL). One can give-away the type-safety and treat all columns as equal but feels less idiomatic.
 - *key takeaway*: learn it now or re-invent a half-baked version using "best-practices" later
@@ -236,7 +236,7 @@ Haskell in fewer than 10e6 ms.
 - Curated list of videos on GitHub >>= search-for: haskell-must-watch
 - Real-World-Haskell is very practical
 - Write Yourself a Scheme in 48h, the best way I found to cement what I learned
-- Jon Carmack QuakeCon's talk, he rocks
+- John Carmack QuakeCon's talk, he rocks
 
 -------
 
@@ -275,7 +275,7 @@ Haskell in fewer than 10e6 ms.
 >   readFile :: FilePath -> IO Text
 >   -- And we know how to counts lines of text.
 >   countLines :: Text -> Int
->   -- We can ask readFile to injest countLines with fmap.
+>   -- We can ask readFile to ingest countLines with fmap.
 >   countFileLines :: FilePath -> IO Int 
 >   countFileLines path = fmap countLines (readFile path)
 > 
