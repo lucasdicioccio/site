@@ -1,0 +1,49 @@
+.hs-keyglyph, .hs-layout {color: red;}
+.hs-keyword {color: blue;}
+.hs-comment, .hs-comment a {color: green;}
+.hs-str, .hs-chr {color: teal;}
+.hs-keyword,.hs-conid, .hs-varid, .hs-conop, .hs-varop, .hs-num, .hs-cpp, .hs-sel, .hs-definition {}
+
+
+/* For Mouseover Annotations */
+
+a.annot{
+    position:relative; 
+    color:#000;
+    text-decoration:none
+  }
+
+a.annot:hover{z-index:25; background-color:#ff0}
+
+a.annot span.annottext{display: none}
+
+a.annot:hover span.annottext{ 
+  border-radius: 5px 5px;
+  
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px; 
+  
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
+  -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); 
+
+  display:block;
+  position: absolute; 
+  left: 1em; top: 2em; 
+  z-index: 99;
+  margin-left: 5; 
+  background: #FFFFAA; 
+  border: 2px solid #FFAD33;
+  padding: 0.8em 1em;
+}
+
+hr { margin-top: 40em; }
+
+h1 { background-color: antiquewhite;}
+h1 { border-radius: 3em; padding: 0em 2em; text-align: center;}
+
+li { background-color: #eeeeee;}
+li { margin-top:0.5em; padding:0.2em 3em; border-radius:0.5em; list-style-position: inside; }
+
+em { color: red; }
+strong { color: cadetblue; }
