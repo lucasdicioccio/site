@@ -109,7 +109,7 @@
 <span class='hs-varop'>&gt;</span>           <span class='hs-comment'>-- start. That is, you cannot start cooking and figure out later that you</span>
 <span class='hs-varop'>&gt;</span>           <span class='hs-comment'>-- lack an ingredient.  Also, the makeCrepes function does not</span>
 <span class='hs-varop'>&gt;</span>           <span class='hs-comment'>-- expose intermediary steps, which prevents your secret</span>
-<span class='hs-varop'>&gt;</span>           <span class='hs-comment'>-- trick to make the tastiest crepes.</span>
+<span class='hs-varop'>&gt;</span>           <span class='hs-comment'>-- trick to make the tastiest crepes from leaking somewhere.</span>
 </pre><ul><li><strong>parametricity</strong> prevents observation (a.k.a universal quantification)</li></ul><pre><span class='hs-varop'>&gt;</span>           <span class='hs-varid'>length</span> <span class='hs-keyglyph'>::</span> <span class='hs-keyglyph'>[</span><span class='hs-varid'>a</span><span class='hs-keyglyph'>]</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-conid'>Int</span> <span class='hs-comment'>-- promises to work for "any" `a` you can</span>
 <span class='hs-varop'>&gt;</span>                                <span class='hs-comment'>-- imagine (i.e., for all `a`). Thus, length</span>
 <span class='hs-varop'>&gt;</span>                                <span class='hs-comment'>-- cannot "observe" the values in the list,</span>

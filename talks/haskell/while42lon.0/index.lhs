@@ -165,7 +165,7 @@ Haskell in fewer than 10e6 ms.
 >           -- start. That is, you cannot start cooking and figure out later that you
 >           -- lack an ingredient.  Also, the makeCrepes function does not
 >           -- expose intermediary steps, which prevents your secret
->           -- trick to make the tastiest crepes.
+>           -- trick to make the tastiest crepes from leaking somewhere.
 
 - **parametricity** prevents observation (a.k.a universal quantification)
 
