@@ -14,11 +14,11 @@ Haskell in fewer than 10e6 ms.
 
 - The Maslow pyramid of needs
 
-` food > safety > love > esteem > self-actualization `
+>         ` food > safety > love > esteem > self-actualization `
 
 - The lucasdicioccio pyramid of solutions
 
-` timeliness > correctness > maintainability > prettiness > light-shedding `
+>         ` timeliness > correctness > maintainability > prettiness > light-shedding `
 
 - I can write "quick-and-dirty" code just fine now, but I know that making leaps upward is pretty cheap with Haskell.
 - Correctness for most stupid yet time-consuming errors is basically free.
@@ -60,7 +60,7 @@ Haskell in fewer than 10e6 ms.
 >           carWheelsB :: Four Wheels  -- exactly Four wheels for a car
 >
 >           -- With the B definition, no need to litter code with length
->           -- checks or asserts, you cannot build a car with two many or two
+>           -- checks or asserts, you cannot build a car with too many or too
 >           -- few wheels. Basically turning the compiler into an automated
 >           -- and meticulous test suites.
 >           -- You could do the same in Java but the syntax overhead is
@@ -68,12 +68,13 @@ Haskell in fewer than 10e6 ms.
 
 >           data Maybe x = Nothing | Just x
 >                      --          ^ this 'or' is the bit of information
->                      -- telling whether a value exists or not
+>                      --            telling whether a value exists or not
 >
 >           baldwin :: Maybe User  -- Nothing | Just User
->                              --                    ^ user baldwin
->                              --               ^ proof carrying user baldwin
->                              -- ^ baldwin doesn't exist
+>                                  --                ^ user baldwin
+>                                  --           ^ Just-constructor: proof
+>                                  --             carrying user baldwin at runtime
+>                                  -- ^ Nothing-constructor: baldwin doesn't exist
 >
 >           -- say we have a function returning the name for a User
 >           userName :: User -> Name
