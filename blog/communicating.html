@@ -23,7 +23,7 @@
 		Human languages are rich and there are many possible sentences
 		someone can use to express a concept. Try to make a good use
 		when drawing from this treasure because each time you use a
-		word you take away a bit of the word's's singularity.
+		word you take away a bit of the words' singularity.
 		</p>
 
 		<h2>Motivation</h2>
@@ -60,14 +60,16 @@
 		discussions happen <em>synchronously</em>. That is, your
 		audience is busy waiting for your opinion. It is quite impolite
 		or uncomforting (in some culture) to make your audience wait
-		for an extended duration. Regrettably, we humans are
-		poorly-trained to build flawless sentences on-the-fly. We also
-		are quite tolerant of clunky sentences, because we want to be
-		nice. As a result, we do not help each other much and reinforce
-		the status quo. More concerning, once a rarely-used word is
-		being introduced at an increasing frequency, there is a risk
-		that we adopt an imprecise or a misleading meaning for the
-		word.<p>
+		for an extended duration before replying. Regrettably, we
+		humans are poorly-trained to build flawless sentences
+		on-the-fly. We also are quite tolerant of clunky sentences,
+		because we want to be nice. As a result, we do not help each
+		other much. This status quo is self-reinforcing: we get used to
+		bad communication, which means the lower efforts are required
+		to communicate and we do not train to communicate above this
+		level. More concerning, once a rarely-used word is being
+		introduced at an increasing frequency, there is a risk that we
+		adopt an imprecise or a misleading meaning for the word.<p>
 
 		<p>This page is my attempt to preserve the rarity of some
 		infrequent words: technical <em>jargon</em> in computer
@@ -79,9 +81,115 @@
 		excessively, but sometimes people will misemploy a word or
 		stretch a concept to gain some advantage, to sell more
 		products, or attracting more mindshare. Such situations are
-		unfortunate and this page will articulate my interpretation of
-		when to best use some technical terms.
-		</p>
+		unfortunate and this page discusses when to best use some
+		technical terms. </p>
 
-		</div>
-</body></html>
+		<h2>-= Composable =-</h2>
+
+		<p>Software is built from small pieces put together in a
+		program or a library. Software development may look a bit
+		abstract to people out of the software industy. Developers will
+		often explain their craft using car-analogies or references to
+		Lego-bricks to illustrate that a final product is assembled
+		from many small parts which fit together thanks to
+		articulations and connections. An equally valid -- yet less
+		flattering -- analogy of software development is the
+		sandcastle: we can easily reshape a sandcastle by taking or
+		adding small bits of sand; we don't really know why it stands
+		but it always breaks apart after a short timespan.
+		Summarizing, we can build castle with Legos or with sand but
+		the experience will be different and the results will have
+		vastly-different properties. It turns out that developers have
+		many choices to write programs and systems. "Prefer composition
+		over inheritance" is a sentence you may have heard before,
+		"composable configuration" is another one. It seems that
+		"composable" is an attractive property of software and you will
+		see it used more and more. Pay attention because the term
+		"composition" is often used when "combination" is more adequate
+		(but less flattering because of "combinatorial explosion"). I
+		hope I can convince you that these two notions diverge in
+		subtle-yet-crucial ways for software engineering.</p>
+
+		<p>In a sentence, <strong>combination is a form of combination
+		that destroys information</strong>.
+		That is, after combining two items into a new item you no
+		longer want to access these items as you would have done before
+		combining them. What object-oriented programming (OOP) texts
+		presents as 'composition' in the famous mantra "composition
+		over inheritance" is essentially 'combination' with
+		'encapsulation'. Sometimes, OOP texts distinguish 'composition'
+		from 'aggregation'. Hence, restricting the definition of
+		'composition'. I find this restriction essential but
+		unsatisfying because it needs another concept of 'ownership' of
+		objects. Ownership of objects does not translate well outside
+		OOP, yet we use 'composition' for templates or configurations
+		too (what really matters is the dependency link). Thus, there
+		is something more and I believe the meaning of 'composition' is
+		stretched in the OOP mantra.</p>
+
+		<p>Let's take an example using simple structures: natural
+		numbers like zero, one, two etc. Natural numbers have little
+		content and "just exist" thanks to the power of the human mind
+		and a few axioms. One can take two numbers and combine them.
+		For instance, one can sum two numbers: <pre>C = A + B</pre> One
+		could also combine numbers using their product: <pre>D = A x B
+		</pre> Last but not least, one could combine numbers by storing
+		them in a two-element list: <pre>L = [A, B]</pre> I would argue
+		that the first two combinations capture the essence of
+		'composition' but not the later one.  This example seems silly
+		or outrageous but I assure you that my intentions are good: we
+		can get some intuition about the nature of composition by
+		looking at the difference between the sum and product on one
+		hand, and the list on the other hand. Where we do 'composition'
+		the right-hand side is no longer needed  once it has been
+		reduced to the left-hand side. That is, we can destroy
+		information from our program. In the blatantly not-composed
+		list example, we however did not delete information, we added
+		more structure to hold the same amount of information than
+		before. Here lies the distinction between 'composition' and
+		'combination': one destroys information and the other adds
+		information. The more information we need to process, the more
+		time-consuing it becomes, hence it's normal that we prefer
+		programs and library which "compose well".</p>
+		
+		<p>I like the number sum vs. number list example because
+		it is simple enough to give us an intuition distinguishing
+		'combination' and 'composition'. One could argue that this
+		example is not honest to god because one way to represent
+		numbers is using a linked-list of "nothing" and the sum of two
+		numbers is again a list, hence the sum of two numbers is not
+		destroying any of the two original lists.
+		Let's have a close look using the following (ill-defined)
+		notation: <pre> 3 = () - () - () - . </pre> and
+                <pre> 4 = () - () - () - () - . </pre>
+		which means we sort of have these two foundamental rules:
+                <pre> 0 = . AND +1 = () -</pre>
+		Using this notation, summing values means concatenating
+		the two lists. 
+		<pre>7 = 4 + 3 = () - () - () - () - () - () - () - .</pre>
+		It's not clear whether we destroyed information, let's have a
+		look at making a list of numbers (abusing ill-defined
+		notation):
+		<pre>[4, 3] = (() - () - () - () - .) - (() - () - () - .) - .</pre>
+		There is much noise on this line, but the distinction between
+		the two operations becomes clearer: we have a single 'dot'
+		after summing two numbers; we have three 'dots' when combining
+		tow numbers in a list. These disappearing dots, I claim, are
+		the information one destroys by combining two numbers. You
+		already know that if I gave you 7, you have no clue what the
+		original numbers were; I could have built 7 with '5+2'. Hence
+		'5+2' is interchangeable with '4+3' but [5,2] is not
+		interchangeable with [4,3]. I know this last statement teaches
+		you nothing. However this whole disgression had the only point
+		to <em>show before your eyes</em> that there exist at least two
+		combination process with different mechanics, and you knew
+		about it already. Hence, pay attention to marketing speech
+		conflating the two notions, ask yourself which information is
+		destroyed or added when combining elements. I still need to
+		explain why we are so easily fooled and why it's very difficult
+		to use the word 'composition' well in a computer programming
+		setup.
+		</p>
+	</div> 
+</body>
+</html>
