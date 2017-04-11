@@ -207,9 +207,9 @@
 		within layers of adapters, interface implementations, and other
 		flavors of dependency injections. Unfortunately, indirections
 		come with their own logic and do not _compose_ well with other
-		indirections. The result of integrating multiple libraries,
-		each using a different flavor of indirections produces
-		hard-to-follow code, where the glue-code logic outweights the
+		indirections. One result of integrating multiple libraries
+		with varying flavor of indirections produces hard-to-follow
+		code. In such code, the glue-code logic outweights the
 		business-logic code. Codebases with lots of indirections give
 		rise to code with a configuration ceremony, where passing
 		arguments requires a dance with leaps and bounds, jumps, and
@@ -221,21 +221,24 @@
 		Abstractions are mental constructs more than code constructs.
 		Abstractions lets us speak using accurate descriptions of a
 		behavior for a class of systems. That is, rather than being
-		useful once, an abstraction is all about re-use. It is true
-		that I mentioned indirections enable re-use, but indirections
-		do not help peopl have accurate an useful discussions.
+		useful once, an abstraction is all about re-use. 
+		Although indirections enable re-use, indirections do not help
+		people have accurate and useful discussions outside code
+		discussions (e.g., refactoring how a parameter trickles down to
+		the business logic vs. find a parallel in another business
+		domain).
 		</p>
 
 		<p>It is correct that abstractions make code hard to follow for
 		people who do not know a particular abstractions. However,
-		abstractions can be tought outside the scope of a particular
+		abstractions can be taught outside the scope of a particular
 		problem. For instance, you can learn about convexity in
 		mathematics and use it in your code as a property of a
 		particular function. Someone not well-versed in mathematics
-		might not understand the importance of this property and may
-		hence be unable to grasp how such a library works. The converse
-		is not true: code that defies human understanding is not always
-		abstract.
+		might not understand the importance of this property and 
+		hence, may be unable to grasp how such a library works. The
+		converse is not true: code that defies human understanding is
+		not always abstract.
 		</p>
 		
 		<p>Indirections make code hard to follow for a simple reasons:
