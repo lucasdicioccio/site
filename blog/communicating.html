@@ -26,7 +26,7 @@
 		word you take away a bit of the words' singularity.
 		</p>
 
-		<h2>Motivation</h2>
+		<h2 id="motivation">Motivation</h2>
 		
 		<p> Our ancestors devised a number of tools to help us
 		arbitrage which construction is best for expressing a
@@ -84,7 +84,7 @@
 		unfortunate and this page discusses when to best use some
 		technical terms. </p>
 
-		<h2>-= Composable =-</h2>
+		<h2 id="composable-vs-combinable">-= Composable =-</h2>
 
 		<p>Software is built from small pieces put together in a
 		program or a library. Software development may look a bit
@@ -187,6 +187,64 @@
 		conflating the two notions, ask yourself which information is
 		destroyed or added when combining elements.
 		</p>
-	</div> 
-</body>
+
+		<h2 id="abstract-vs-indirect">-= Abstract =-</h2>
+
+		<p>You might have heard that some codebase is too
+		<em>abstract</em> when a better term would be to use
+		<em>indirected</em>.
+		</p>
+
+		<p>Most code is terrible, my own code likely is a good
+		contributor to the terribleness of code in general. When
+		discussing bad code, developers often refer to "too-abstract"
+		code when they actually mean "too-indirected" code. Indirection
+		is useful: indirection allows to setup decoupling points
+		between two subparts of a same system. For instance, to let
+		tests run in a different configuration from the production
+		code. That said, indirections are often over-used. Resulting in
+		"too-indirected" code: the business logic becomes burried
+		within layers of adapters, interface implementations, and other
+		flavors of dependency injections. Unfortunately, indirections
+		come with their own logic and do not _compose_ well with other
+		indirections. The result of integrating multiple libraries,
+		each using a different flavor of indirections produces
+		hard-to-follow code, where the glue-code logic outweights the
+		business-logic code. Codebases with lots of indirections give
+		rise to code with a configuration ceremony, where passing
+		arguments requires a dance with leaps and bounds, jumps, and
+		hops. Such symptoms do not correspond to abstract code, they
+		correspond to indirected code.
+		</p>
+		
+		<p>Abstractions have a different nature than indirections.
+		Abstractions are mental constructs more than code constructs.
+		Abstractions lets us speak using accurate descriptions of a
+		behavior for a class of systems. That is, rather than being
+		useful once, an abstraction is all about re-use. It is true
+		that I mentioned indirections enable re-use, but indirections
+		do not help peopl have accurate an useful discussions.
+		</p>
+
+		<p>It is correct that abstractions make code hard to follow for
+		people who do not know a particular abstractions. However,
+		abstractions can be tought outside the scope of a particular
+		problem. For instance, you can learn about convexity in
+		mathematics and use it in your code as a property of a
+		particular function. Someone not well-versed in mathematics
+		might not understand the importance of this property and may
+		hence be unable to grasp how such a library works. The converse
+		is not true: code that defies human understanding is not always
+		abstract.
+		</p>
+		
+		<p>Indirections make code hard to follow for a simple reasons:
+		indirections add distance between where objects in code are
+		created and where they are used. Indirections can take
+		different shapes: layers, factories, super-classes,
+		dependencies, etc. In short, there is no lack of imagination
+		for hiding indirections behind a nicer name, but keep in mind
+		that abstractions are not indirections.
+		</p>
+	</div></body>
 </html>
